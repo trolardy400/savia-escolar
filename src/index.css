@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
+  
+  --color-sage-50: #f4f7f4;
+  --color-sage-100: #e6ede6;
+  --color-sage-200: #d1ddd1;
+  --color-sage-300: #b1c4b1;
+  --color-sage-400: #8ba58b;
+  --color-sage-500: #6b876b;
+  --color-sage-600: #546d54;
+  --color-sage-700: #455745;
+  --color-sage-800: #3a483a;
+  --color-sage-900: #323d32;
+  --color-sage-950: #0f140f;
+  
+  --color-forest-100: #e6ede6;
+  --color-forest-200: #b2c4b2;
+  --color-forest-300: #8ba58b;
+  --color-forest-400: #546d54;
+  --color-forest-500: #2d4a2d;
+  --color-forest-600: #243b24;
+  --color-forest-700: #1b2c1b;
+}
+
+@layer base {
+  body {
+    @apply bg-sage-50 dark:bg-sage-950 text-sage-900 dark:text-sage-200 font-sans antialiased transition-colors duration-300;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif tracking-tight dark:text-sage-100;
+  }
+}
+
+.botanical-gradient {
+  background: linear-gradient(135deg, #f4f7f4 0%, #e6ede6 100%);
+}
+
+.dark .botanical-gradient {
+  background: linear-gradient(135deg, #0f140f 0%, #1a241a 100%);
+}
+
+.glass-card {
+  @apply bg-white/80 dark:bg-sage-900/80 backdrop-blur-md border border-sage-200 dark:border-sage-800 shadow-sm rounded-2xl transition-all;
+}
+
+.btn-primary {
+  @apply px-4 py-2 bg-forest-600 dark:bg-forest-500 text-white rounded-xl hover:bg-forest-700 dark:hover:bg-forest-400 transition-all shadow-sm hover:shadow-md active:scale-95 flex items-center gap-2;
+}
+
+.btn-secondary {
+  @apply px-4 py-2 bg-white dark:bg-sage-800 text-sage-700 dark:text-sage-300 border border-sage-200 dark:border-sage-700 rounded-xl hover:bg-sage-100 dark:hover:bg-sage-700 transition-all shadow-sm active:scale-95 flex items-center gap-2;
+}
+
+.input-field {
+  @apply w-full px-4 py-2 bg-white dark:bg-sage-800 border border-sage-200 dark:border-sage-700 rounded-xl focus:ring-2 focus:ring-sage-400 dark:focus:ring-sage-500 focus:border-transparent outline-none transition-all dark:text-sage-100;
+}

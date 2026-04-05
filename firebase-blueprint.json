@@ -1,0 +1,85 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "Administrator user profile",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "role": { "type": "string", "enum": ["admin"] },
+        "preferences": {
+          "type": "object",
+          "properties": {
+            "language": { "type": "string" },
+            "notifications": { "type": "boolean" }
+          }
+        }
+      },
+      "required": ["uid", "email"]
+    },
+    "Student": {
+      "title": "Student",
+      "description": "Student record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "grade": { "type": "string" },
+        "parentEmail": { "type": "string", "format": "email" },
+        "status": { "type": "string", "enum": ["active", "inactive"] }
+      },
+      "required": ["name", "grade"]
+    },
+    "Event": {
+      "title": "Event",
+      "description": "School event for accounting",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "date": { "type": "string", "format": "date-time" },
+        "totalAmount": { "type": "number" },
+        "installments": { "type": "integer" },
+        "status": { "type": "string", "enum": ["upcoming", "active", "completed"] },
+        "spreadsheetId": { "type": "string" },
+        "spreadsheetUrl": { "type": "string" }
+      },
+      "required": ["name", "totalAmount"]
+    },
+    "Payment": {
+      "title": "Payment",
+      "description": "Payment record for a student in an event",
+      "type": "object",
+      "properties": {
+        "studentId": { "type": "string" },
+        "eventId": { "type": "string" },
+        "installmentNumber": { "type": "integer" },
+        "amount": { "type": "number" },
+        "date": { "type": "string", "format": "date-time" },
+        "status": { "type": "string", "enum": ["paid", "pending", "overdue"] }
+      },
+      "required": ["studentId", "eventId", "amount"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles"
+    },
+    "/students/{studentId}": {
+      "schema": "Student",
+      "description": "Student directory"
+    },
+    "/events/{eventId}": {
+      "schema": "Event",
+      "description": "Event records"
+    },
+    "/events/{eventId}/payments/{paymentId}": {
+      "schema": "Payment",
+      "description": "Payment tracking per event"
+    }
+  }
+}
