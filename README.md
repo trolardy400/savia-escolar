@@ -37,12 +37,3 @@ Savia Escolar está construida sobre tecnologías de punta para asegurar un rend
 * **Backend:** Firebase (Firestore para base de datos reactiva y Google Auth).
 * **Estilos:** Tailwind CSS v4 + Framer Motion.
 * **Automatización:** Google Apps Script para sincronización con herramientas de Google Workspace.
-
-## 🚀 Configuración y Despliegue Local
-
-**Prerrequisitos:** Node.js instalado y Firebase CLI (`npm install -g firebase-tools`).
-
-1. **Instalación de dependencias:**
-   Ejecuta en la terminal:
-   ```bash
-   npm install
